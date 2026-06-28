@@ -10,6 +10,7 @@ import { getPostMeta } from '@/lib/blog'
 import { mdxComponents } from '@/app/components/mdxComponents'
 import { BlogPageUI } from '@/app/components/BlogPageUI'
 
+
 interface Params {
   slug: string
   slide: string
@@ -30,7 +31,43 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   const { slug } = await params
   const meta = getPostMeta(slug)
   if (!meta) return {}
-  return { title: `${meta.title} — Blog` }
+
+  const baseUrl = 'https://vishnumandaladev.com'
+  const postUrl = `${baseUrl}/blog/${slug}/1`
+  const ogImageUrl = `${baseUrl}/blog/${slug}/opengraph-image`
+
+  return {
+    title: `${meta.title} — Blog`,
+    description: meta.description,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: postUrl,
+      siteName: 'Vishnu Vardhan Mandala',
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: meta.title,
+        },
+      ],
+      locale: 'en_US',
+      type: 'article',
+      publishedTime: new Date(meta.date.split('.').reverse().join('-')).toISOString(),
+      authors: ['Vishnu Vardhan Mandala'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: meta.title,
+      description: meta.description,
+      images: [ogImageUrl],
+      creator: '@vishnumandala',
+    },
+    alternates: {
+      canonical: postUrl,
+    },
+  }
 }
 
 export default async function BlogSlidePage({
@@ -55,10 +92,41 @@ export default async function BlogSlidePage({
   const hasNext = slideNum < meta.slideCount
   const isMultiSlide = meta.slideCount > 1
 
+  // JSON-LD structured data for the blog post
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: meta.title,
+    description: meta.description,
+    url: `https://vishnumandaladev.com/blog/${slug}/1`,
+    image: meta.cover || `https://vishnumandaladev.com/blog/${slug}/opengraph-image`,
+    datePublished: new Date(meta.date.split('.').reverse().join('-')).toISOString(),
+    author: {
+      '@type': 'Person',
+      name: 'Vishnu Vardhan Mandala',
+      url: 'https://vishnumandaladev.com',
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Vishnu Vardhan Mandala',
+      url: 'https://vishnumandaladev.com',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://vishnumandaladev.com/blog/${slug}/1`,
+    },
+  }
+
   return (
     <div className="w-full px-6 py-10">
       <BlogPageUI />
       <div className="mx-auto max-w-3xl">
+
+        {/* JSON-LD structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
 
         {/* Top nav bar */}
         <div className="mb-8 flex items-center justify-between">

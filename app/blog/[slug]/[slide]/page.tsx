@@ -32,22 +32,22 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   const meta = getPostMeta(slug)
   if (!meta) return {}
 
-  const baseUrl = 'https://vishnumandaladev.com'
-  const postUrl = `${baseUrl}/blog/${slug}/1`
-  const ogImageUrl = `${baseUrl}/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description || '')}`
+  const ogImageParams = new URLSearchParams({
+    title: meta.title,
+    desc: meta.description || '',
+  })
 
   return {
     title: `${meta.title} — Blog`,
     description: meta.description,
-    metadataBase: new URL(baseUrl),
     openGraph: {
       title: meta.title,
       description: meta.description,
-      url: postUrl,
+      url: `/blog/${slug}/1`,
       siteName: 'Vishnu Vardhan Mandala',
       images: [
         {
-          url: ogImageUrl,
+          url: `/og?${ogImageParams.toString()}`,
           width: 1200,
           height: 630,
           alt: meta.title,
@@ -63,11 +63,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
       card: 'summary_large_image',
       title: meta.title,
       description: meta.description,
-      images: [ogImageUrl],
+      images: [`/og?${ogImageParams.toString()}`],
       creator: '@vishnumandala',
-    },
-    alternates: {
-      canonical: postUrl,
     },
   }
 }

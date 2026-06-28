@@ -1,0 +1,35 @@
+# Project Setup
+
+## Install via Bun
+
+```bash
+bun create next-app my-app
+cd my-app
+bun dev
+```
+
+Bun's package manager is dramatically faster than npm or yarn for installs.
+
+## Folder structure
+
+Next.js 16 with the App Router looks like this:
+
+
+```
+my-app/
+├── app/
+│   ├── layout.tsx      ← root layout (wraps every page)
+│   ├── page.tsx        ← home page "/"
+│   └── about/
+│       └── page.tsx    ← "/about"
+├── public/             ← static assets
+└── next.config.ts
+```
+
+## Key files
+
+- `app/layout.tsx` — the shell rendered around every page. Put your `<html>` and `<body>` tags here.
+- `app/page.tsx` — the default export is the page component for that route.
+- `next.config.ts` — Next.js configuration. Turbopack is the default dev bundler in v16.
+
+> **Tip:** You can have nested layouts. Each folder can have its own `layout.tsx` that wraps only the routes inside it.

@@ -1,0 +1,53 @@
+{
+  "certifications": [
+    {
+      "name": "Next.js SEO Fundamentals",
+      "issuer": "Vercel",
+      "date": "26.04.2025",
+      "url": "https://vercel.com",
+      "icon": "SiVercel"
+    },
+    {
+      "name": "Gemini Certified Educator",
+      "issuer": "Google for Education",
+      "date": "09.12.2025",
+      "url": "https://edu.google.com",
+      "icon": "SiGooglegemini"
+    },
+    {
+      "name": "React — The Complete Guide",
+      "issuer": "Udemy",
+      "date": "15.03.2025",
+      "url": "https://udemy.com",
+      "icon": "SiUdemy"
+    },
+    {
+      "name": "Node.js Developer Certification",
+      "issuer": "OpenJS Foundation",
+      "date": "10.01.2025",
+      "url": "https://openjsf.org",
+      "icon": "SiNodedotjs"
+    },
+    {
+      "name": "TypeScript Fundamentals",
+      "issuer": "Frontend Masters",
+      "date": "05.11.2024",
+      "url": "https://frontendmasters.com",
+      "icon": "SiTypescript"
+    },
+    {
+      "name": "Docker & Kubernetes Essentials",
+      "issuer": "A Cloud Guru",
+      "date": "20.09.2024",
+      "url": "https://acloudguru.com",
+      "icon": "SiDocker"
+    },
+    {
+      "name": "MongoDB Developer Path",
+      "issuer": "MongoDB University",
+      "date": "14.08.2024",
+      "url": "https://university.mongodb.com",
+      "icon": "SiMongodb"
+    }
+  ]
+}

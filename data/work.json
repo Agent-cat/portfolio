@@ -1,0 +1,58 @@
+{
+  "heading": "Work Experience",
+  "subheading": "My work experiences across different companies and roles.",
+  "jobs": [
+    {
+      "company": "Vyuha",
+      "role": "Software Developer Intern",
+      "startDate": "November 2024",
+      "endDate": "February 2025",
+      "location": "Vijayawada, India",
+      "workType": "On-Site",
+      "status": null,
+      "technologies": [
+        {
+          "name": "Bun",
+          "icon": "SiBun"
+        },
+        {
+          "name": "Docker",
+          "icon": "SiDocker"
+        },
+        {
+          "name": "Kubernetes",
+          "icon": "SiKubernetes"
+        },
+        {
+          "name": "GitHub Actions",
+          "icon": "SiGithubactions"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "SiTailwindcss"
+        },
+        {
+          "name": "MongoDB",
+          "icon": "SiMongodb"
+        },
+        {
+          "name": "Redis",
+          "icon": "SiRedis"
+        },
+        {
+          "name": "Vitest",
+          "icon": "SiVitest"
+        }
+      ],
+      "highlights": [
+        "Developed and maintained high-performance REST APIs using BUN.js and Express.js, ensuring secure and reliable data access in a production environment.",
+        "Architected a modular backend system that boosted scalability and maintainability, enabling faster development.",
+        "Optimized database queries, indexing strategies, and Redis-based caching, significantly reducing API response latency and improving throughput under high concurrent traffic.",
+        "Containerized backend services using Docker and deployed applications on Kubernetes clusters with Horizontal Pod Autoscaling (HPA) to efficiently handle production workloads",
+        "Built and automated CI/CD pipelines using GitHub Actions, enabling streamlined build, testing, and Kubernetes-based deployment workflows with reduced manual intervention.",
+        "Used Redis for distributed caching, session management, and performance optimization, minimizing database load and enhancing application responsiveness.",
+        "Implemented unit and integration tests with Vitest."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+# Tailwind CSS v4 — What's New
+
+Tailwind v4 is a complete rewrite. The biggest changes are a new CSS-first configuration system, a dramatically faster build engine, and zero JavaScript config files.
+
+## The big changes at a glance
+
+- **No more `tailwind.config.js`** — configuration now lives in your CSS file
+- **`@import "tailwindcss"`** replaces the old `@tailwind` directives
+- **`@theme`** block defines your design tokens in CSS
+- **10x faster builds** thanks to the new Oxide engine (written in Rust)
+- **Native CSS cascade layers** — utilities, components, and base all use `@layer`
+
+## Before (v3)
+
+```js
+// tailwind.config.js
+module.exports = {
+  content: ['./app/**/*.tsx'],
+  theme: {
+    extend: {
+      colors: { brand: '#6366f1' }
+    }
+  }
+}
+```
+
+```css
+/* globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+## After (v4)
+
+```css
+/* globals.css */
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #6366f1;
+  --font-sans: 'Geist', sans-serif;
+}
+```
+
+That's it. No config file, no content paths to define — v4 auto-detects your template files.

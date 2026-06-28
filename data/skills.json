@@ -1,0 +1,78 @@
+{
+  "heading": "Skills",
+  "categories": [
+    {
+      "label": "Languages",
+      "skills": [
+        { "name": "Java",       "icon": "BiLogoJava"       },
+        { "name": "JavaScript", "icon": "SiJavascript"     },
+        { "name": "TypeScript", "icon": "SiTypescript"     },
+        { "name": "Rust",       "icon": "SiRust"           }
+      ]
+    },
+    {
+      "label": "Frontend",
+      "skills": [
+        { "name": "React",       "icon": "SiReact"       },
+        { "name": "Next.js",     "icon": "SiNextdotjs"   },
+        { "name": "Tailwind CSS","icon": "SiTailwindcss" },
+        { "name": "shadcn/ui",   "icon": "SiShadcnui"    },
+        { "name": "Radix UI",    "icon": "SiRadixui"     },
+        { "name": "Motion",      "icon": "SiFramer"      },
+        { "name": "GSAP",        "icon": "SiGsap"        }
+      ]
+    },
+    {
+      "label": "Backend",
+      "skills": [
+        { "name": "Node.js",     "icon": "SiNodedotjs"  },
+        { "name": "Bun",         "icon": "SiBun"        },
+        { "name": "Actix Web",   "icon": "SiActix"      },
+        { "name": "tRPC",        "icon": "SiTrpc"       },
+        { "name": "gRPC",        "icon": "SiSocket"     },
+        { "name": "WebSockets",  "icon": "SiRsocket"    }
+      ]
+    },
+    {
+      "label": "Databases",
+      "skills": [
+        { "name": "PostgreSQL", "icon": "SiPostgresql" },
+        { "name": "MySQL",      "icon": "SiMysql"      },
+        { "name": "MongoDB",    "icon": "SiMongodb"    },
+        { "name": "Redis",      "icon": "SiRedis"      }
+      ]
+    },
+    {
+      "label": "Cloud & DevOps",
+      "skills": [
+        { "name": "Docker",           "icon": "SiDocker"           },
+        { "name": "Kubernetes",       "icon": "SiKubernetes"       },
+        { "name": "Jenkins",          "icon": "SiJenkins"          },
+        { "name": "GitHub Actions",   "icon": "SiGithubactions"    },
+        { "name": "AWS Lambda",       "icon": "TbLambda"           },
+        { "name": "Cloudflare Workers","icon": "SiCloudflareworkers"}
+      ]
+    },
+    {
+      "label": "Messaging & Streaming",
+      "skills": [
+        { "name": "Apache Kafka", "icon": "SiApachekafka" },
+        { "name": "RabbitMQ",     "icon": "SiRabbitmq"    }
+      ]
+    },
+    {
+      "label": "Testing",
+      "skills": [
+        { "name": "Vitest", "icon": "SiVitest"  },
+        { "name": "JUnit",  "icon": "SiJunit5"  }
+      ]
+    },
+    {
+      "label": "Observability & Monitoring",
+      "skills": [
+        { "name": "Prometheus", "icon": "SiPrometheus" },
+        { "name": "Grafana",    "icon": "SiGrafana"    }
+      ]
+    }
+  ]
+}

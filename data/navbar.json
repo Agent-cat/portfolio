@@ -1,0 +1,9 @@
+{
+  "nav": [
+    { "label": "Home",     "href": "/" },
+    { "label": "Work",     "href": "/work" },
+    { "label": "Projects", "href": "/projects" },
+    { "label": "Blog",     "href": "/blog" },
+    { "label": "Resume",   "href": "/resume" }
+  ]
+}

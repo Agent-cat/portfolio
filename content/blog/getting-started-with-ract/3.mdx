@@ -1,0 +1,44 @@
+# Server vs. Client Components
+
+This is the single most important concept to grasp in App Router.
+
+## Server Components (default)
+
+Every component in the `app/` directory is a **Server Component** by default.
+
+- Rendered on the server — zero JS sent to the browser
+- Can `async/await` directly — no `useEffect` needed for data fetching
+- Cannot use `useState`, `useEffect`, or browser APIs
+
+```java
+// app/page.tsx — Server Component
+export default async function Page() {
+  const data = await fetch('https://api.example.com/posts')
+  const posts = await data.json()
+  return <ul>{posts.map(p => <li key={p.id}>{p.title}</li>)}</ul>
+}
+```
+
+## Client Components
+
+Add `'use client'` at the top of the file to opt into client rendering.
+
+- Can use hooks (`useState`, `useEffect`, etc.)
+- Can access browser APIs (`window`, `localStorage`, etc.)
+- JS bundle is sent to the browser
+
+```tsx
+'use client'
+import { useState } from 'react'
+
+export function Counter() {
+  const [count, setCount] = useState(0)
+  return <button onClick={() => setCount(c => c + 1)}>{count}</button>
+}
+```
+
+## The rule of thumb
+
+> Keep as much as possible as Server Components. Drop down to Client Components only when you need interactivity or browser APIs.
+
+That's it for this series! Go build something great.

@@ -1,0 +1,19 @@
+{
+  "heading": "Education",
+  "entries": [
+    {
+      "degree": "B.Tech in Computer Science and Engineering",
+      "institution": "KL University",
+      "location": "Vijayawada, India",
+      "gpa": "9.1 / 10",
+      "period": "Expected Graduation: 2027"
+    },
+    {
+      "degree": "Intermediate",
+      "institution": "Narayana Junior College",
+      "location": "Hyderabad, India",
+      "gpa": "9.4 / 10",
+      "period": null
+    }
+  ]
+}

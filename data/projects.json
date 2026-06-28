@@ -1,0 +1,66 @@
+{
+  "heading": "Projects",
+  "subheading": "Things I've built — side projects, experiments, and open source work.",
+  "projects": [
+    {
+      "name": "Portfolio",
+      "description": "My personal portfolio built with Next.js 16, Tailwind CSS v4, and next-themes. Fully data-driven — all content lives in JSON files.",
+      "image": "/projects/portfolio.png",
+      "status": "Live",
+      "year": "2026",
+      "githubUrl": "https://github.com/ramxin/portfolio",
+      "liveUrl": "https://ramx.in",
+      "technologies": [
+        { "name": "Next.js",    "icon": "SiNextdotjs"   },
+        { "name": "Tailwind",   "icon": "SiTailwindcss"  },
+        { "name": "TypeScript", "icon": "SiTypescript"   },
+        { "name": "Vercel",     "icon": "SiVercel"       }
+      ]
+    },
+    {
+      "name": "Promote",
+      "description": "A platform for creating and managing promotional campaigns. Built the complete frontend infrastructure from scratch including design system and API integration.",
+      "image": "/projects/promote.png",
+      "status": "Live",
+      "year": "2025",
+      "githubUrl": null,
+      "liveUrl": "https://promote.so",
+      "technologies": [
+        { "name": "Next.js",    "icon": "SiNextdotjs"   },
+        { "name": "TypeScript", "icon": "SiTypescript"   },
+        { "name": "Tailwind",   "icon": "SiTailwindcss"  },
+        { "name": "Figma",      "icon": "SiFigma"        },
+        { "name": "Turborepo",  "icon": "SiTurborepo"    }
+      ]
+    },
+    {
+      "name": "Dev Tools CLI",
+      "description": "A command-line toolkit for automating repetitive dev workflows — scaffolding, code generation, and deployment helpers.",
+      "image": null,
+      "status": "WIP",
+      "year": "2025",
+      "githubUrl": "https://github.com/ramxin/dev-tools-cli",
+      "liveUrl": null,
+      "technologies": [
+        { "name": "Node.js",    "icon": "SiNodedotjs"   },
+        { "name": "TypeScript", "icon": "SiTypescript"   },
+        { "name": "Bun",        "icon": "SiBun"          }
+      ]
+    },
+    {
+      "name": "Taskr",
+      "description": "Minimal task management app with real-time sync, drag-and-drop boards, and team collaboration features.",
+      "image": "/projects/taskr.png",
+      "status": "Archived",
+      "year": "2024",
+      "githubUrl": "https://github.com/ramxin/taskr",
+      "liveUrl": null,
+      "technologies": [
+        { "name": "React",      "icon": "SiReact"        },
+        { "name": "Supabase",   "icon": "SiSupabase"     },
+        { "name": "Tailwind",   "icon": "SiTailwindcss"  },
+        { "name": "TypeScript", "icon": "SiTypescript"   }
+      ]
+    }
+  ]
+}

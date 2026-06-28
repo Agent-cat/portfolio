@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { SectionHeader } from './SectionHeader'
 import {
   SiTypescript,
   SiJavascript,
@@ -80,15 +81,41 @@ const iconMap: Record<string, { Icon: IconType; color: string; darkColor: string
 // ── Skill card ───────────────────────────────────────────────────────────────
 function SkillCard({ name, icon }: { name: string; icon: string }) {
   const entry = iconMap[icon]
+  const [showTooltip, setShowTooltip] = useState(false)
   if (!entry) return null
   const { Icon, color, darkColor } = entry
 
   return (
-    <li className="w-full sm:w-auto">
-      <span className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-2.5 py-2 transition-all duration-200 hover:border-zinc-300 hover:shadow-sm dark:border-zinc-700 dark:bg-zinc-800/50 dark:hover:border-zinc-600">
+    <li className="w-full sm:w-auto relative">
+      {/* Mobile: icon only with tooltip */}
+      <button
+        onClick={() => setShowTooltip(!showTooltip)}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        className="sm:hidden flex items-center justify-center p-2 transition-all duration-200 hover:scale-110 w-full"
+        aria-label={name}
+      >
+        <Icon
+          size={24}
+          className="light-icon"
+          style={{ '--icon-light': color, '--icon-dark': darkColor } as React.CSSProperties}
+          aria-hidden="true"
+        />
+      </button>
+      
+      {/* Mobile tooltip */}
+      {showTooltip && (
+        <div className="sm:hidden absolute left-1/2 -translate-x-1/2 -top-8 z-50 px-2 py-1 rounded-md bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-medium whitespace-nowrap shadow-lg">
+          {name}
+          <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-zinc-900 dark:border-t-zinc-100" />
+        </div>
+      )}
+
+      {/* Desktop: full card with icon and text */}
+      <span className="hidden sm:flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 transition-all duration-200 hover:border-zinc-300 hover:shadow-sm dark:border-zinc-700 dark:bg-zinc-800/50 dark:hover:border-zinc-600">
         <Icon
           size={14}
-          className="light-icon"
+          className="light-icon shrink-0"
           style={{ '--icon-light': color, '--icon-dark': darkColor } as React.CSSProperties}
           aria-hidden="true"
         />
@@ -106,46 +133,31 @@ export function SkillsSection() {
   return (
     <section aria-label="Skills" className="w-full px-4 sm:px-6 pb-12">
       <div className="mx-auto max-w-3xl">
-        <div
-          className="mx-auto max-w-5xl border-y border-zinc-200 dark:border-zinc-800 mb-6 relative z-10"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(135deg, transparent, transparent 4px, rgba(200,200,200,0.15) 4px, rgba(200,200,200,0.15) 5px)',
-          }}
-        >
-          <Image
-            src="/floral.png"
-            alt=""
-            width={120}
-            height={120}
-            className="absolute -left-16 top-1/2 -translate-y-1/2 -rotate-90 opacity-40 dark:opacity-20 pointer-events-none"
-          />
-          <h2 className="px-16 py-6 text-center text-xl font-bold text-zinc-900 dark:text-zinc-50" style={{ fontFamily: 'var(--font-courgette)' }}>{heading}</h2>
-          <Image
-            src="/floral.png"
-            alt=""
-            width={120}
-            height={120}
-            className="absolute -right-16 top-1/2 -translate-y-1/2 rotate-90 opacity-40 dark:opacity-20 pointer-events-none"
-          />
-        </div>
+        <SectionHeader title={heading} />
 
         {/* Categories */}
-        <div className="space-y-7">
+        <div className="space-y-6 sm:space-y-7">
           {categories.map((cat) => {
             const isExpanded = expanded[cat.label] ?? false
-            const skillsToShow = isExpanded ? cat.skills : cat.skills.slice(0, 6)
-            const hasMore = cat.skills.length > 6
+            const skillsToShow = isExpanded ? cat.skills : cat.skills.slice(0, 8)
+            const hasMore = cat.skills.length > 8
 
             return (
               <div key={cat.label}>
                 {/* Category label */}
-                <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                <h3 className="mb-3 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
                   {cat.label}
                 </h3>
 
-                {/* Skills */}
-                <ul className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2">
+                {/* Skills - grid of icons on mobile, flex on desktop */}
+                <div className="sm:hidden rounded-xl border border-zinc-200 dark:border-zinc-700 p-3">
+                  <ul className="grid grid-cols-5 gap-2">
+                    {skillsToShow.map((skill) => (
+                      <SkillCard key={skill.name} name={skill.name} icon={skill.icon} />
+                    ))}
+                  </ul>
+                </div>
+                <ul className="hidden sm:flex sm:flex-wrap sm:gap-2">
                   {skillsToShow.map((skill) => (
                     <SkillCard key={skill.name} name={skill.name} icon={skill.icon} />
                   ))}
@@ -155,9 +167,23 @@ export function SkillsSection() {
                 {hasMore && (
                   <button
                     onClick={() => setExpanded((prev) => ({ ...prev, [cat.label]: !prev[cat.label] }))}
-                    className="mt-2 text-xs font-medium text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 sm:hidden"
+                    className="mt-3 flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 sm:hidden"
                   >
-                    {isExpanded ? 'Show less' : 'Show more'}
+                    {isExpanded ? (
+                      <>
+                        Show less
+                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+                        </svg>
+                      </>
+                    ) : (
+                      <>
+                        Show more
+                        <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </>
+                    )}
                   </button>
                 )}
               </div>

@@ -91,3 +91,27 @@ body {
 .dark .border-flourish {
   filter: none;
 }
+
+/* ── Mobile responsiveness improvements ─────────────────────────────────────── */
+@media (max-width: 640px) {
+  /* Ensure proper padding on mobile */
+  .px-6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Smaller border flourish on mobile */
+  .border-flourish {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 480px) {
+  /* Stack social icons on very small screens */
+  .social-icons-mobile {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

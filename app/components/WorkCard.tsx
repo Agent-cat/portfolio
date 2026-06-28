@@ -127,26 +127,26 @@ export function WorkCard({ job }: { job: Job }) {
   return (
     <article className="relative p-4 sm:p-6">
       {/* Header */}
-      <div className="flex items-start gap-3">
+      <div className="flex items-start gap-2.5 sm:gap-3">
         {image && (
           <img
             src={image}
             alt={`${company} logo`}
-            className="h-10 w-10 shrink-0 rounded-full object-cover"
+            className="h-8 w-8 sm:h-10 sm:w-10 shrink-0 rounded-full object-cover"
           />
         )}
         <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <h2 className="text-base font-bold text-zinc-900 dark:text-zinc-50">{company}</h2>
+          <div className="flex items-center gap-2 flex-wrap">
+            <h2 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-zinc-50">{company}</h2>
             {status && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-1.5 py-0.5 sm:px-2 sm:py-0.5 text-[9px] sm:text-[10px] font-medium text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
                 <span className="h-1 w-1 rounded-full bg-emerald-500" aria-hidden="true" />
                 {status}
               </span>
             )}
           </div>
-          <p className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">{role}</p>
-          <div className="mt-1 flex flex-wrap items-center gap-x-1.5 text-xs text-zinc-400 dark:text-zinc-500">
+          <p className="mt-0.5 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">{role}</p>
+          <div className="mt-1 flex flex-wrap items-center gap-x-1 sm:gap-x-1.5 text-[10px] sm:text-xs text-zinc-400 dark:text-zinc-500">
             <span>{workType}</span>
             <span aria-hidden="true">|</span>
             <span>{dateRange}</span>
@@ -157,10 +157,10 @@ export function WorkCard({ job }: { job: Job }) {
       </div>
 
       {/* Branch: What I've done */}
-      <div className="relative mt-6 pl-8">
+      <div className="relative mt-4 sm:mt-6 pl-6 sm:pl-8">
         <TreeBranch />
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+          <h3 className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
             What I&apos;ve done
           </h3>
           <button
@@ -174,9 +174,9 @@ export function WorkCard({ job }: { job: Job }) {
           </button>
         </div>
         {highlightsOpen && (
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2">
             {highlights.map((point, i) => (
-              <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <li key={i} className="flex gap-2 sm:gap-2.5 text-xs sm:text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-300 dark:bg-zinc-600" aria-hidden="true" />
                 {point}
               </li>
@@ -186,26 +186,32 @@ export function WorkCard({ job }: { job: Job }) {
       </div>
 
       {/* Branch: Technologies & Tools */}
-      <div className="relative mt-6 pl-8">
+      <div className="relative mt-4 sm:mt-6 pl-6 sm:pl-8">
         <TreeBranch isLast />
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+        <h3 className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
           Technologies &amp; Tools
         </h3>
-        <ul className="mt-3 flex flex-wrap gap-2" aria-label="Technologies used">
+        <ul className="mt-2 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-2" aria-label="Technologies used">
           {technologies.map((tech) => {
             const entry = iconMap[tech.icon]
             if (!entry) return null
             const { Icon, color, darkColor } = entry
             return (
               <li key={tech.icon}>
-                <span className="inline-flex h-8 items-center gap-1.5 rounded-lg border border-zinc-200 bg-white pl-2 pr-3 dark:border-zinc-700 dark:bg-zinc-800">
+                <span className="inline-flex h-7 sm:h-8 items-center gap-1 sm:gap-1.5 rounded-lg border border-zinc-200 bg-white pl-1.5 pr-2 sm:pl-2 sm:pr-3 dark:border-zinc-700 dark:bg-zinc-800">
                   <Icon
-                    size={14}
-                    className="shrink-0 light-icon"
+                    size={12}
+                    className="shrink-0 light-icon sm:hidden"
                     style={{ '--icon-light': color, '--icon-dark': darkColor } as React.CSSProperties}
                     aria-hidden="true"
                   />
-                  <span className="text-xs font-medium text-zinc-600 dark:text-zinc-300">
+                  <Icon
+                    size={14}
+                    className="shrink-0 light-icon hidden sm:block"
+                    style={{ '--icon-light': color, '--icon-dark': darkColor } as React.CSSProperties}
+                    aria-hidden="true"
+                  />
+                  <span className="text-[10px] sm:text-xs font-medium text-zinc-600 dark:text-zinc-300">
                     {tech.name}
                   </span>
                 </span>

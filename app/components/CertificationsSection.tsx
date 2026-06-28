@@ -1,12 +1,6 @@
 import Image from 'next/image'
 import {
-  SiVercel,
-  SiGooglegemini,
-  SiUdemy,
-  SiNodedotjs,
-  SiTypescript,
-  SiDocker,
-  SiMongodb,
+  SiSalesforce,
   SiNextdotjs,
   SiReact,
   SiPostgresql,
@@ -28,16 +22,21 @@ import {
 import { LuBadgeCheck, LuArrowUpRight } from 'react-icons/lu'
 import type { IconType } from 'react-icons'
 import certificationsData from '@/data/certifications.json'
+import { SectionHeader } from './SectionHeader'
+
+const CambridgeIcon = ({ size = 16, color = '#003366' }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke={color} strokeWidth="1.5" fill="none" />
+    <path d="M12 6L7 9V15L12 18L17 15V9L12 6Z" fill={color} />
+    <path d="M12 8L9 10V14L12 16L15 14V10L12 8Z" fill="white" />
+    <path d="M12 10L10.5 11V13L12 14L13.5 13V11L12 10Z" fill={color} />
+  </svg>
+)
 
 // ── Icon registry — add more issuers as needed ───────────────────────────────
-const iconMap: Record<string, { Icon: IconType; color: string }> = {
-  SiVercel:      { Icon: SiVercel,       color: '#000000' },
-  SiGooglegemini:{ Icon: SiGooglegemini, color: '#4285F4' },
-  SiUdemy:       { Icon: SiUdemy,        color: '#A435F0' },
-  SiNodedotjs:   { Icon: SiNodedotjs,    color: '#339933' },
-  SiTypescript:  { Icon: SiTypescript,   color: '#3178C6' },
-  SiDocker:      { Icon: SiDocker,       color: '#2496ED' },
-  SiMongodb:     { Icon: SiMongodb,      color: '#47A248' },
+const iconMap: Record<string, { Icon: IconType | React.FC<{ size?: number; color?: string }>; color: string }> = {
+  SiSalesforce:  { Icon: SiSalesforce,   color: '#00A1E0' },
+  CambridgeIcon: { Icon: CambridgeIcon,  color: '#003366' },
   SiNextdotjs:   { Icon: SiNextdotjs,    color: '#000000' },
   SiReact:       { Icon: SiReact,        color: '#61DAFB' },
   SiPostgresql:  { Icon: SiPostgresql,   color: '#4169E1' },
@@ -64,34 +63,16 @@ export function CertificationsSection() {
   return (
     <section aria-label="Certifications" className="w-full px-6 pb-12">
       <div className="mx-auto max-w-3xl">
-        <div
-          className="mx-auto max-w-5xl border-y border-zinc-200 dark:border-zinc-800 mb-6 relative z-10"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(135deg, transparent, transparent 4px, rgba(200,200,200,0.15) 4px, rgba(200,200,200,0.15) 5px)',
-          }}
-        >
-          <Image
-            src="/floral.png"
-            alt=""
-            width={120}
-            height={120}
-            className="absolute -left-16 top-1/2 -translate-y-1/2 -rotate-90 opacity-40 dark:opacity-20 pointer-events-none"
-          />
-          <h2 className="px-16 py-6 text-center text-xl font-bold text-zinc-900 dark:text-zinc-50" style={{ fontFamily: 'var(--font-courgette)' }}>
-            Certifications
-            <span className="ml-2 text-sm font-normal text-zinc-400 dark:text-zinc-500">
-              ({count})
-            </span>
-          </h2>
-          <Image
-            src="/floral.png"
-            alt=""
-            width={120}
-            height={120}
-            className="absolute -right-16 top-1/2 -translate-y-1/2 rotate-90 opacity-40 dark:opacity-20 pointer-events-none"
-          />
-        </div>
+        <SectionHeader
+          title={
+            <>
+              Certifications
+              <span className="ml-2 text-sm font-normal text-zinc-400 dark:text-zinc-500">
+                ({count})
+              </span>
+            </>
+          }
+        />
 
         <div className="relative border border-zinc-200 dark:border-zinc-800">
           <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 left-0 -translate-x-[34%] -translate-y-[34%] pointer-events-none opacity-70 border-flourish" />
@@ -112,8 +93,20 @@ export function CertificationsSection() {
                   >
                     {/* Issuer icon badge */}
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-zinc-200 bg-white dark:border-zinc-700 dark:bg-zinc-800">
-                      {entry ? (
-                        <entry.Icon size={16} style={{ color: entry.color }} aria-hidden="true" />
+                      {cert.image ? (
+                        <Image
+                          src={cert.image}
+                          alt={`${cert.issuer} logo`}
+                          width={24}
+                          height={24}
+                          className="rounded"
+                        />
+                      ) : entry ? (
+                        'size' in entry.Icon ? (
+                          <entry.Icon size={16} color={entry.color} aria-hidden="true" />
+                        ) : (
+                          <entry.Icon size={16} style={{ color: entry.color }} aria-hidden="true" />
+                        )
                       ) : (
                         <LuBadgeCheck size={16} className="text-zinc-400" aria-hidden="true" />
                       )}
@@ -128,6 +121,12 @@ export function CertificationsSection() {
                         <span>@ {cert.issuer}</span>
                         <span aria-hidden="true" className="text-zinc-300 dark:text-zinc-700">|</span>
                         <span>{cert.date}</span>
+                        {cert.credentialId && (
+                          <>
+                            <span aria-hidden="true" className="text-zinc-300 dark:text-zinc-700">|</span>
+                            <span>ID: {cert.credentialId}</span>
+                          </>
+                        )}
                       </p>
                     </div>
 

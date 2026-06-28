@@ -3,6 +3,7 @@ import { Inter, Courgette } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from './components/ThemeProvider'
 import { Navbar } from './components/Navbar'
+import { Footer } from './components/Footer'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -32,7 +33,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50"
+        className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 overflow-x-hidden"
         suppressHydrationWarning
       >
         <ThemeProvider>
@@ -52,6 +53,7 @@ export default function RootLayout({
             </div>
           </div>
           <main className="flex-1 pt-14">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

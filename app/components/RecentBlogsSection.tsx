@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { LuImage, LuArrowRight } from 'react-icons/lu'
 import { getAllPosts } from '@/lib/blog'
+import { SectionHeader } from './SectionHeader'
 
 export function RecentBlogsSection() {
   const posts = getAllPosts().slice(0, 4)
@@ -9,32 +10,7 @@ export function RecentBlogsSection() {
 
   return (
     <section className="mx-auto w-full max-w-3xl px-6 pb-16">
-      {/* Section header — spans between vertical lines */}
-      <div
-        className="mx-auto max-w-5xl border-y border-zinc-200 dark:border-zinc-800 mb-6 relative z-10"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(135deg, transparent, transparent 4px, rgba(200,200,200,0.15) 4px, rgba(200,200,200,0.15) 5px)',
-        }}
-      >
-        <Image
-          src="/floral.png"
-          alt=""
-          width={120}
-          height={120}
-          className="absolute -left-16 top-1/2 -translate-y-1/2 -rotate-90 opacity-40 dark:opacity-20 pointer-events-none"
-        />
-        <h2 className="px-16 py-6 text-center text-xl font-bold text-zinc-900 dark:text-zinc-50" style={{ fontFamily: 'var(--font-courgette)' }}>
-          Recent posts
-        </h2>
-        <Image
-          src="/floral.png"
-          alt=""
-          width={120}
-          height={120}
-          className="absolute -right-16 top-1/2 -translate-y-1/2 rotate-90 opacity-40 dark:opacity-20 pointer-events-none"
-        />
-      </div>
+      <SectionHeader title="Recent posts" />
 
       {/* 2-col grid */}
       <div className="relative grid grid-cols-1 gap-px border border-zinc-200 bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-800 sm:grid-cols-2">

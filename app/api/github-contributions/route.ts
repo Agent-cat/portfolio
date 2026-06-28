@@ -33,18 +33,30 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'GITHUB_TOKEN not configured' }, { status: 500 })
   }
 
-  const res = await fetch(GITHUB_API, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: QUERY,
-      variables: { login: username },
-    }),
-    next: { revalidate: 3600 },
-  })
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 10000)
+
+  let res: Response
+  try {
+    res = await fetch(GITHUB_API, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: QUERY,
+        variables: { login: username },
+      }),
+      next: { revalidate: 3600 },
+      signal: controller.signal,
+    })
+  } catch {
+    clearTimeout(timeout)
+    return NextResponse.json({ error: 'Failed to reach GitHub API' }, { status: 502 })
+  } finally {
+    clearTimeout(timeout)
+  }
 
   if (!res.ok) {
     return NextResponse.json({ error: 'GitHub API error' }, { status: res.status })
@@ -54,6 +66,10 @@ export async function GET(request: Request) {
 
   if (json.errors) {
     return NextResponse.json({ error: json.errors[0].message }, { status: 400 })
+  }
+
+  if (!json.data?.user) {
+    return NextResponse.json({ error: 'User not found' }, { status: 404 })
   }
 
   const calendar = json.data.user.contributionsCollection.contributionCalendar

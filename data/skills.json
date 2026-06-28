@@ -30,7 +30,7 @@
         { "name": "Actix Web",   "icon": "SiActix"      },
         { "name": "tRPC",        "icon": "SiTrpc"       },
         { "name": "gRPC",        "icon": "SiSocket"     },
-        { "name": "WebSockets",  "icon": "SiRsocket"    }
+        { "name": "WebSockets",  "icon": "SiSocket"    }
       ]
     },
     {

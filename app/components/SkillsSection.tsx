@@ -163,11 +163,11 @@ export function SkillsSection() {
                   ))}
                 </ul>
 
-                {/* Show more button — mobile only */}
+                {/* Show more button */}
                 {hasMore && (
                   <button
                     onClick={() => setExpanded((prev) => ({ ...prev, [cat.label]: !prev[cat.label] }))}
-                    className="mt-3 flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200 sm:hidden"
+                    className="mt-3 flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
                   >
                     {isExpanded ? (
                       <>

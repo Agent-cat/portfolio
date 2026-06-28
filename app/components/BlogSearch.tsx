@@ -23,7 +23,9 @@ export function BlogSearch({ posts }: { posts: BlogMeta[] }) {
           className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400"
           aria-hidden="true"
         />
+        <label htmlFor="blog-search" className="sr-only">Search blog posts</label>
         <input
+          id="blog-search"
           type="search"
           placeholder="Search blog..."
           value={query}
@@ -36,7 +38,7 @@ export function BlogSearch({ posts }: { posts: BlogMeta[] }) {
       {filtered.length === 0 ? (
         <p className="text-sm text-zinc-400 dark:text-zinc-600">No posts found.</p>
       ) : (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
           {filtered.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}

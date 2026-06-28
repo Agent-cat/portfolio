@@ -179,10 +179,7 @@ export function GitHubHeatmap({ username }: { username: string }) {
                       className={`h-[10px] w-[10px] sm:h-[11px] sm:w-[11px] ${GREEN[level]} touch-manipulation outline-1 outline-offset-1 outline-transparent transition-[outline-color] sm:hover:outline-zinc-300 sm:dark:hover:outline-zinc-600`}
                       onMouseEnter={(e) => showTooltip(day, e.currentTarget)}
                       onMouseLeave={() => setHovered(null)}
-                      onTouchStart={(e) => {
-                        e.preventDefault()
-                        showTooltip(day, e.currentTarget)
-                      }}
+                      onClick={(e) => showTooltip(day, e.currentTarget)}
                     />
                   )
                 })}

@@ -167,6 +167,7 @@ export function WorkCard({ job }: { job: Job }) {
             type="button"
             onClick={() => setHighlightsOpen(!highlightsOpen)}
             className="shrink-0 flex flex-col items-center gap-0.5 rounded-md p-1 text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+            aria-expanded={highlightsOpen}
             aria-label={highlightsOpen ? 'Collapse highlights' : 'Expand highlights'}
           >
             <HiChevronUp className={`h-3 w-3 ${highlightsOpen ? 'text-zinc-900 dark:text-zinc-100' : ''}`} />

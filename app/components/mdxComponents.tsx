@@ -31,8 +31,8 @@ export const mdxComponents: MDXComponents = {
     <ol className="mb-5 ml-6 space-y-1.5 list-decimal">{children}</ol>
   ),
   li: ({ children }) => (
-    <li className="flex items-start gap-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-      <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-600" aria-hidden="true" />
+    <li className="flex items-start gap-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400 marker:text-zinc-400 dark:marker:text-zinc-600">
+      <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-600 list-none" aria-hidden="true" />
       <span>{children}</span>
     </li>
   ),
@@ -80,12 +80,22 @@ export const mdxComponents: MDXComponents = {
   // ── Images ────────────────────────────────────────────────────────────
   img: (props) => (
     <span className="my-6 block overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
-      <Image
-        sizes="(max-width: 768px) 100vw, 672px"
-        style={{ width: '100%', height: 'auto' }}
-        {...(props as ImageProps)}
-        alt={props.alt ?? ''}
-      />
+      {props.width && props.height ? (
+        <Image
+          sizes="(max-width: 768px) 100vw, 672px"
+          style={{ width: '100%', height: 'auto' }}
+          {...(props as ImageProps)}
+          alt={props.alt ?? ''}
+        />
+      ) : (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={props.src}
+          alt={props.alt ?? ''}
+          className="w-full h-auto"
+          loading="lazy"
+        />
+      )}
     </span>
   ),
 }

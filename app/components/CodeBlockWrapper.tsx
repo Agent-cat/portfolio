@@ -34,11 +34,11 @@ export function CodeBlockWrapper({ children, 'data-language': language, ...rest 
         </div>
       )}
 
-      {/* Copy button — visible on hover */}
+      {/* Copy button — visible on hover and focus */}
       <button
         onClick={handleCopy}
         aria-label={copied ? 'Copied!' : 'Copy code'}
-        className="absolute right-3 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-md border border-zinc-300 bg-white text-zinc-500 opacity-0 transition-opacity group-hover:opacity-100 hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-400 dark:hover:text-zinc-200"
+        className="absolute right-3 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-md border border-zinc-300 bg-white text-zinc-500 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100 hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-400 dark:hover:text-zinc-200 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400"
       >
         {copied ? (
           <LuCheck size={13} className="text-emerald-500" aria-hidden="true" />

@@ -41,18 +41,18 @@ export function BlogPageUI() {
   }, [])
 
   useEffect(() => {
-    if (headings.length === 0) return
-
     const onScroll = () => {
       setShowTop(window.scrollY > 300)
 
-      const scrollPos = window.scrollY + 140
-      let current = headings[0].id
-      for (const h of headings) {
-        const el = document.getElementById(h.id)
-        if (el && el.offsetTop <= scrollPos) current = h.id
+      if (headings.length > 0) {
+        const scrollPos = window.scrollY + 140
+        let current = headings[0].id
+        for (const h of headings) {
+          const el = document.getElementById(h.id)
+          if (el && el.offsetTop <= scrollPos) current = h.id
+        }
+        setActiveId(current)
       }
-      setActiveId(current)
     }
 
     window.addEventListener('scroll', onScroll, { passive: true })

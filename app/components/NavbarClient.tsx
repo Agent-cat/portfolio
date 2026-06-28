@@ -158,17 +158,17 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
               </div>
               {/* Desktop controls */}
               <div className="hidden md:flex items-center gap-1.5">
-                <button
-                  aria-label="Search (Ctrl K)"
-                  className="flex h-8 items-center gap-1.5 rounded-md border border-zinc-200 px-2.5 text-xs text-zinc-400 transition-colors hover:border-zinc-300 hover:text-zinc-600 dark:border-zinc-700 dark:hover:border-zinc-600 dark:hover:text-zinc-300"
+                <span
+                  className="flex h-8 items-center gap-1.5 rounded-md border border-zinc-200 px-2.5 text-xs text-zinc-400 dark:border-zinc-700"
+                  aria-hidden="true"
                 >
-                  <LuSearch size={13} aria-hidden="true" />
+                  <LuSearch size={13} />
                   <span className="text-zinc-400 dark:text-zinc-600">Search</span>
                   <span className="flex items-center gap-0.5">
                     <kbd className="rounded bg-zinc-100 px-1 font-mono text-[10px] text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500">Ctrl</kbd>
                     <kbd className="rounded bg-zinc-100 px-1 font-mono text-[10px] text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500">K</kbd>
                   </span>
-                </button>
+                </span>
 
                 <a
                   href={githubHref}
@@ -196,7 +196,7 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -5, scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 360, damping: 30 }}
-                className="absolute left-[17.5%] right-[17.5%] top-full mt-1 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-[0_8px_48px_-8px_rgba(0,0,0,0.14),0_2px_8px_-2px_rgba(0,0,0,0.06)] dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-[0_8px_48px_-8px_rgba(0,0,0,0.6)]"
+                className="hidden md:block absolute left-[17.5%] right-[17.5%] top-full mt-1 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-[0_8px_48px_-8px_rgba(0,0,0,0.14),0_2px_8px_-2px_rgba(0,0,0,0.06)] dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-[0_8px_48px_-8px_rgba(0,0,0,0.6)]"
               >
                 <div className="flex min-h-[140px]">
                   <div className="flex w-[35%] shrink-0 flex-col border-r border-zinc-100 p-3 dark:border-zinc-800">

@@ -20,7 +20,7 @@ export function getAllProjects(): ProjectMeta[] {
   return files
     .map((file) => {
       const slug = file.replace('.mdx', '')
-      const source = fs.readFileSync(path.join(PROJECTS_DIR, file), 'utf8')
+      const source = fs.readFileSync(path.join(PROJECTS_DIR, file), 'utf8').replace(/\r\n/g, '\n')
       const match = source.match(/^---\n([\s\S]*?)\n---/)
       if (!match) return null
 

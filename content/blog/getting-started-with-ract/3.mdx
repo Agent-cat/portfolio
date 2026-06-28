@@ -10,7 +10,7 @@ Every component in the `app/` directory is a **Server Component** by default.
 - Can `async/await` directly — no `useEffect` needed for data fetching
 - Cannot use `useState`, `useEffect`, or browser APIs
 
-```java
+```tsx
 // app/page.tsx — Server Component
 export default async function Page() {
   const data = await fetch('https://api.example.com/posts')

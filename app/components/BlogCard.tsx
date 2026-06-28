@@ -9,10 +9,10 @@ export function BlogCard({ post }: { post: BlogMeta }) {
   return (
     <Link
       href={`/blog/${slug}/1`}
-      className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700"
+      className="group block overflow-hidden rounded-xl border border-zinc-200 bg-white transition-all duration-200 hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700 dark:hover:shadow-lg"
     >
       {/* Cover image */}
-      <div className="relative h-36 sm:h-44 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+      <div className="relative h-48 sm:h-44 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900">
         {cover ? (
           <Image
             src={cover}
@@ -29,20 +29,19 @@ export function BlogCard({ post }: { post: BlogMeta }) {
 
         {/* Pinned badge — sits in the top-right corner of the image */}
         {pinned && (
-          <span className="absolute right-2 top-2 sm:right-3 sm:top-3 inline-flex items-center gap-1 rounded-full bg-zinc-900/80 px-1.5 py-0.5 sm:px-2 sm:py-0.5 text-[10px] sm:text-xs font-medium text-white backdrop-blur-sm dark:bg-zinc-50/80 dark:text-zinc-900">
-            <LuPin size={8} className="sm:hidden" aria-hidden="true" />
-            <LuPin size={10} className="hidden sm:block" aria-hidden="true" />
+          <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-zinc-900/80 px-2 py-0.5 text-xs font-medium text-white backdrop-blur-sm dark:bg-zinc-50/80 dark:text-zinc-900">
+            <LuPin size={10} aria-hidden="true" />
             Pinned
           </span>
         )}
       </div>
 
       {/* Meta */}
-      <div className="p-3 sm:p-4">
-        <h2 className="text-xs sm:text-sm font-semibold leading-snug text-zinc-900 dark:text-zinc-50 group-hover:underline group-hover:underline-offset-2">
+      <div className="p-4">
+        <h2 className="text-sm font-semibold leading-snug text-zinc-900 dark:text-zinc-50 group-hover:underline group-hover:underline-offset-2">
           {title}
         </h2>
-        <p className="mt-1 sm:mt-1.5 text-[10px] sm:text-xs text-zinc-400 dark:text-zinc-600">{date}</p>
+        <p className="mt-1.5 text-xs text-zinc-400 dark:text-zinc-600">{date}</p>
       </div>
     </Link>
   )

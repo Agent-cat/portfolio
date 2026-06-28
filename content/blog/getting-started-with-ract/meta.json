@@ -1,7 +1,7 @@
 {
-  "title": "Getting Started with react 16",
+  "title": "Getting Started with React",
   "date": "12.06.2026",
-  "description": "A practical guide to react 16 — hooks, components, and the new APIs you need to know.",
+  "description": "A practical guide to React — components, hooks, and the patterns you need to know.",
   "cover": "https://assets.vercel.com/image/upload/v1538361091/repositories/next-js/next-js-bg.png",
   "pinned": true,
   "hidden": false

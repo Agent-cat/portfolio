@@ -144,13 +144,15 @@ export function ExperienceSection() {
   const groupedCompanies: GroupedCompany[] = []
 
   topJobs.forEach((job) => {
-    let existing = groupedCompanies.find((c) => c.company === job.company)
+    const j = job as Job
+    let existing = groupedCompanies.find((c) => c.company === j.company)
     if (!existing) {
       existing = {
-        company: job.company,
-        location: job.location,
-        workType: job.workType,
-        status: job.status,
+        company: j.company,
+        location: j.location,
+        workType: j.workType,
+        status: j.status,
+        image: j.image,
         roles: [],
       }
       groupedCompanies.push(existing)

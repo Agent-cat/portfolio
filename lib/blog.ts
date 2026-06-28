@@ -35,6 +35,11 @@ export function getAllPosts(): BlogMeta[] {
 
 /** Read metadata for a single post. Returns null if the post doesn't exist. */
 export function getPostMeta(slug: string): BlogMeta | null {
+  // Prevent path traversal
+  if (slug.includes('..') || slug.includes('/') || slug.includes('\\') || slug.includes('\0')) {
+    return null
+  }
+
   const dir = path.join(BLOG_DIR, slug)
   const metaFile = path.join(dir, 'meta.json')
 

@@ -42,7 +42,7 @@ export default async function BlogSlidePage({
   const slideNum = parseInt(slide, 10)
 
   const meta = getPostMeta(slug)
-  if (!meta || isNaN(slideNum) || slideNum < 1 || slideNum > meta.slideCount) {
+  if (!meta || String(slideNum) !== slide || isNaN(slideNum) || slideNum < 1 || slideNum > meta.slideCount) {
     notFound()
   }
 

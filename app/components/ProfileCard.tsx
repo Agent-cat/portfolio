@@ -43,9 +43,18 @@ export function ProfileCard() {
       <section aria-label="Profile card" className="w-full pt-4 pb-12 px-4 sm:px-6">
         <div className="mx-auto max-w-3xl">
 
-          {/* Banner — full width between vertical lines */}
-          <div className="relative h-40 sm:h-56 w-[calc(100%+2rem)] sm:w-[calc(100%+3rem)] -ml-4 sm:-ml-6 overflow-hidden rounded-b-xl border border-zinc-200 border-t-0 dark:border-zinc-800">
-            {banner && <Image src={banner} alt="" fill className="object-cover" priority />}
+          {/* Quote banner */}
+          <div className="relative h-40 sm:h-56 w-[calc(100%+2rem)] sm:w-[calc(100%+3rem)] -ml-4 sm:-ml-6 overflow-hidden rounded-b-xl border border-zinc-200 border-t-0 dark:border-zinc-800 bg-gradient-to-br from-zinc-50 via-white to-zinc-100 dark:from-zinc-900 dark:via-zinc-950 dark:to-zinc-900">
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-8 sm:px-16 text-center">
+              <span className="text-4xl sm:text-6xl text-zinc-200 dark:text-zinc-800 leading-none mb-2">&ldquo;</span>
+              <p className="text-sm sm:text-lg font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-xl" style={{ fontFamily: 'var(--font-courgette)' }}>
+                Build things that matter, learn relentlessly, and never stop curiousty.
+              </p>
+              <span className="text-4xl sm:text-6xl text-zinc-200 dark:text-zinc-800 leading-none mt-2">&rdquo;</span>
+            </div>
+            {/* Decorative corner accents */}
+            <div className="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-zinc-200 dark:border-zinc-700 rounded-tl-lg opacity-60" />
+            <div className="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-zinc-200 dark:border-zinc-700 rounded-br-lg opacity-60" />
           </div>
 
           {/* Avatar + name / title row */}
@@ -125,7 +134,7 @@ export function ProfileCard() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-[90vw] max-h-[90vw]"
+              className="relative max-w-[90vw] max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
               <button

@@ -11,7 +11,7 @@ export function EducationSection() {
       <div className="mx-auto max-w-3xl">
         <SectionHeader title="Education" />
 
-        <div className="relative border border-zinc-200 dark:border-zinc-800">
+        <div className="relative border border-zinc-200 dark:border-zinc-800 overflow-hidden">
           <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 left-0 -translate-x-[34%] -translate-y-[34%] pointer-events-none opacity-70 border-flourish" />
           <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 right-0 translate-x-[34%] -translate-y-[34%] pointer-events-none opacity-70 border-flourish -scale-x-100" />
           <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 left-0 -translate-x-[34%] translate-y-[34%] pointer-events-none opacity-70 border-flourish -scale-y-100" />

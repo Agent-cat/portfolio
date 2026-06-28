@@ -7,9 +7,9 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ title, as: Component = 'h2' }: SectionHeaderProps) {
   return (
-    <div className="relative mb-6 z-10 w-full">
-      {/* Horizontal divider line spanning full width of the viewport, vertically centered */}
-      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-zinc-200/80 dark:bg-zinc-800/80 w-screen left-1/2 right-1/2 -translate-x-1/2 pointer-events-none" />
+    <div className="relative mb-6 z-10 w-full overflow-hidden">
+      {/* Horizontal divider line spanning full width, vertically centered */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-zinc-200/80 dark:bg-zinc-800/80 pointer-events-none" />
 
       {/* The original title container, with solid bg-white/bg-zinc-950 under the stripes to mask the line */}
       <div

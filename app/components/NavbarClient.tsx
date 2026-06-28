@@ -86,7 +86,7 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
                 </AnimatePresence>
               </button>
               {/* Desktop logo */}
-              <Link href="/" className="hidden md:inline text-lg font-bold tracking-tight text-zinc-900 transition-opacity hover:opacity-60 dark:text-zinc-50" style={{ fontFamily: 'var(--font-courgette)' }}>
+              <Link href="/" className="hidden md:inline text-lg font-bold tracking-tight text-zinc-900 transition-opacity hover:opacity-60 dark:text-zinc-50 whitespace-nowrap" style={{ fontFamily: 'var(--font-courgette)' }}>
                 Vishnu Mandala
               </Link>
             </div>
@@ -94,7 +94,7 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
             {/* Col 2 — Logo (mobile) / Nav (desktop) */}
             <div className="flex justify-center">
               {/* Mobile logo */}
-              <Link href="/" className="md:hidden text-lg font-bold tracking-tight text-zinc-900 transition-opacity hover:opacity-60 dark:text-zinc-50" style={{ fontFamily: 'var(--font-courgette)' }}>
+              <Link href="/" className="md:hidden text-lg font-bold tracking-tight text-zinc-900 transition-opacity hover:opacity-60 dark:text-zinc-50 whitespace-nowrap" style={{ fontFamily: 'var(--font-courgette)' }}>
                 Vishnu Mandala
               </Link>
               {/* Desktop nav */}
@@ -267,7 +267,7 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-50 bg-black/40 backdrop-blur-md md:hidden"
             onClick={() => setMobileOpen(false)}
           />
           <motion.div
@@ -278,23 +278,23 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
             className="fixed inset-0 z-50 bg-white dark:bg-zinc-950 md:hidden"
           >
             <div className="flex flex-col h-full">
-              {/* Header with close button on left and centered title */}
-              <div className="relative flex items-center justify-center h-14 shrink-0 border-b border-zinc-100 dark:border-zinc-800">
+              {/* Header */}
+              <div className="relative flex items-center h-16 shrink-0 px-5 border-b border-zinc-100 dark:border-zinc-800/80">
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="absolute left-4 flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
                   aria-label="Close menu"
                 >
-                  <LuX size={20} />
+                  <LuX size={18} />
                 </button>
-                <Link href="/" onClick={() => setMobileOpen(false)} className="text-lg font-bold text-zinc-900 dark:text-zinc-50" style={{ fontFamily: 'var(--font-courgette)' }}>
+                <Link href="/" onClick={() => setMobileOpen(false)} className="absolute left-1/2 -translate-x-1/2 text-xl font-bold text-zinc-900 dark:text-zinc-50" style={{ fontFamily: 'var(--font-courgette)' }}>
                   Vishnu Mandala
                 </Link>
               </div>
 
-              {/* Navigation links (vertically and horizontally centered) */}
-              <nav className="flex-1 overflow-y-auto px-6 py-8 flex flex-col justify-center items-center">
-                <div className="w-full max-w-xs flex flex-col gap-5">
+              {/* Navigation links */}
+              <nav className="flex-1 overflow-y-auto px-4 py-6">
+                <div className="flex flex-col gap-1">
                   {nav.map((item, i) => {
                     const isBlog = item.href === '/blog'
                     const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
@@ -302,23 +302,23 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
                     return (
                       <motion.div
                         key={item.href}
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05, duration: 0.25 }}
                       >
                         {isBlog ? (
-                          <div className="flex flex-col items-center">
+                          <div>
                             <button
                               onClick={() => setBlogOpen(o => !o)}
-                              className={`flex w-full h-12 items-center justify-center gap-2 rounded-xl px-4 text-xl font-medium tracking-wide transition-colors ${
+                              className={`flex w-full h-11 items-center gap-3 rounded-xl px-4 text-[15px] font-medium transition-all ${
                                 isActive || blogOpen
-                                  ? 'text-zinc-900 bg-zinc-100 dark:text-zinc-50 dark:bg-zinc-800'
-                                  : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100'
+                                  ? 'bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
+                                  : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
                               }`}
                             >
                               {item.label}
-                              <motion.span animate={{ rotate: blogOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
-                                <LuChevronDown size={18} className="text-zinc-400" />
+                              <motion.span animate={{ rotate: blogOpen ? 180 : 0 }} transition={{ duration: 0.2 }} className="ml-auto">
+                                <LuChevronDown size={16} />
                               </motion.span>
                             </button>
                             <AnimatePresence>
@@ -328,14 +328,14 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
                                   animate={{ height: 'auto', opacity: 1 }}
                                   exit={{ height: 0, opacity: 0 }}
                                   transition={{ duration: 0.2 }}
-                                  className="overflow-hidden w-full"
+                                  className="overflow-hidden"
                                 >
-                                  <div className="py-2 flex flex-col items-center gap-2">
-                                    <Link href="/blog" onClick={() => setMobileOpen(false)} className="flex h-10 items-center justify-center rounded-lg px-3 text-base text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100 w-full text-center">
+                                  <div className="pl-4 py-2 flex flex-col gap-0.5">
+                                    <Link href="/blog" onClick={() => setMobileOpen(false)} className="flex h-10 items-center rounded-lg px-3 text-sm text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100 transition-colors">
                                       All Blogs
                                     </Link>
                                     {pinnedPosts.slice(0, 3).map((post) => (
-                                      <Link key={post.slug} href={`/blog/${post.slug}/1`} onClick={() => setMobileOpen(false)} className="flex h-10 items-center justify-center rounded-lg px-3 text-base text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100 truncate w-full text-center">
+                                      <Link key={post.slug} href={`/blog/${post.slug}/1`} onClick={() => setMobileOpen(false)} className="flex h-10 items-center rounded-lg px-3 text-sm text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100 transition-colors truncate">
                                         {post.title}
                                       </Link>
                                     ))}
@@ -348,10 +348,10 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
                           <Link
                             href={item.href}
                             onClick={() => setMobileOpen(false)}
-                            className={`flex h-12 items-center justify-center rounded-xl px-4 text-xl font-medium tracking-wide transition-colors ${
+                            className={`flex h-11 items-center rounded-xl px-4 text-[15px] font-medium transition-all ${
                               isActive
-                                ? 'text-zinc-900 bg-zinc-100 dark:text-zinc-50 dark:bg-zinc-800'
-                                : 'text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100'
+                                ? 'bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
+                                : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
                             }`}
                           >
                             {item.label}
@@ -364,14 +364,14 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
               </nav>
 
               {/* Footer with GitHub link */}
-              <div className="px-6 py-6 shrink-0 border-t border-zinc-100 dark:border-zinc-800">
+              <div className="px-4 py-4 shrink-0 border-t border-zinc-100 dark:border-zinc-800/80">
                 <a
                   href={githubHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-12 items-center justify-center gap-2 rounded-xl bg-zinc-100 px-4 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-200 hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
+                  className="flex h-11 items-center justify-center gap-2.5 rounded-xl border border-zinc-200 bg-white px-4 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-600 dark:hover:text-zinc-100"
                 >
-                  <SiGithub size={18} aria-hidden="true" />
+                  <SiGithub size={16} aria-hidden="true" />
                   GitHub
                 </a>
               </div>

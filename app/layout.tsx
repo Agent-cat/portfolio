@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${courgette.variable} h-full antialiased`}
+      className={`${inter.variable} ${courgette.variable} h-full antialiased overflow-x-hidden`}
       suppressHydrationWarning
     >
       <body

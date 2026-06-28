@@ -34,11 +34,12 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
 
   const baseUrl = 'https://vishnumandaladev.com'
   const postUrl = `${baseUrl}/blog/${slug}/1`
-  const ogImageUrl = `${baseUrl}/blog/${slug}/opengraph-image`
+  const ogImageUrl = `${baseUrl}/og?title=${encodeURIComponent(meta.title)}&desc=${encodeURIComponent(meta.description || '')}`
 
   return {
     title: `${meta.title} — Blog`,
     description: meta.description,
+    metadataBase: new URL(baseUrl),
     openGraph: {
       title: meta.title,
       description: meta.description,
@@ -50,6 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
           width: 1200,
           height: 630,
           alt: meta.title,
+          type: 'image/png',
         },
       ],
       locale: 'en_US',

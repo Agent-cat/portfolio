@@ -2,12 +2,11 @@ import { SiGithub, SiX, SiInstagram } from 'react-icons/si'
 import { FaLinkedin } from 'react-icons/fa'
 
 const socialLinks = [
-  { icon: SiX, href: 'https://x.com/ramxin', label: 'X / Twitter' },
-  { icon: FaLinkedin, href: 'https://linkedin.com/in/ramxin', label: 'LinkedIn' },
-  { icon: SiGithub, href: 'https://github.com/ramxin', label: 'GitHub' },
-  { icon: SiInstagram, href: 'https://instagram.com/ramxin', label: 'Instagram' },
-]
 
+  { icon: FaLinkedin, href: 'https://www.linkedin.com/in/vishnuvardhan-mandala', label: 'LinkedIn' },
+  { icon: SiGithub, href: 'https://github.com/Agent-cat', label: 'GitHub' },
+  { icon: SiInstagram, href: 'https://instagram.com/_.vishnu_.17', label: 'Instagram' },
+]
 export function Footer() {
   return (
     <footer className="w-full mt-auto">

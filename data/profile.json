@@ -10,13 +10,30 @@
     "artist": "A$AP Rocky, Skepta"
   },
   "socials": [
-    { "label": "X / Twitter", "href": "https://x.com/ramxin",          "icon": "SiX" },
-    { "label": "LinkedIn",    "href": "https://linkedin.com/in/ramxin", "icon": "FaLinkedin" },
-    { "label": "GitHub",      "href": "https://github.com/ramxin",      "icon": "SiGithub" },
-    { "label": "YouTube",     "href": "https://youtube.com/@ramxin",    "icon": "SiYoutube" },
-    { "label": "Instagram",   "href": "https://instagram.com/ramxin",   "icon": "SiInstagram" },
-    { "label": "Pinterest",   "href": "https://pinterest.com/ramxin",   "icon": "SiPinterest" },
-    { "label": "Medium",      "href": "https://medium.com/@ramxin",     "icon": "SiMedium" },
-    { "label": "Email",       "href": "mailto:hi@ramx.in",              "icon": "SiGmail" }
+    {
+      "label": "X / Twitter",
+      "href": "https://x.com/vishnu_mandala",
+      "icon": "SiX"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://linkedin.com/in/vishnuvardhan-mandala",
+      "icon": "FaLinkedin"
+    },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/Agent-cat",
+      "icon": "SiGithub"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://instagram.com/_.vishnu_.17",
+      "icon": "SiInstagram"
+    },
+    {
+      "label": "Email",
+      "href": "mailto:main.vishnumandala@gmail.com",
+      "icon": "SiGmail"
+    }
   ]
 }

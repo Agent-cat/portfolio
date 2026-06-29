@@ -30,7 +30,14 @@ const iconMap: Record<string, IconType> = {
   SiGmail,
 }
 
-export function ProfileCard() {
+interface ProfileCardProps {
+  githubData?: {
+    total: number
+    contributions: any[]
+  } | null
+}
+
+export function ProfileCard({ githubData }: ProfileCardProps) {
   const { name, title, avatar, banner, bio, socials } = profileData
   const [viewerOpen, setViewerOpen] = useState(false)
 
@@ -115,7 +122,7 @@ export function ProfileCard() {
         </div>
 
           {/* GitHub Heatmap */}
-          <GitHubHeatmap username="Agent-cat" />
+          <GitHubHeatmap username="Agent-cat" initialData={githubData} />
 
         </div>
       </section>

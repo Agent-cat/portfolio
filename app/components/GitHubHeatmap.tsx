@@ -30,16 +30,31 @@ function formatDate(dateStr: string): string {
   return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })
 }
 
-export function GitHubHeatmap({ username }: { username: string }) {
-  const [data, setData] = useState<ContributionDay[]>([])
-  const [total, setTotal] = useState(0)
-  const [loading, setLoading] = useState(true)
+interface GitHubHeatmapProps {
+  username: string
+  initialData?: {
+    total: number
+    contributions: ContributionDay[]
+  } | null
+}
+
+export function GitHubHeatmap({ username, initialData }: GitHubHeatmapProps) {
+  const [data, setData] = useState<ContributionDay[]>(initialData?.contributions || [])
+  const [total, setTotal] = useState(initialData?.total || 0)
+  const [loading, setLoading] = useState(!initialData)
   const [error, setError] = useState(false)
   const [hovered, setHovered] = useState<{ day: ContributionDay; x: number; y: number } | null>(null)
   const gridRef = useRef<HTMLDivElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (initialData) {
+      setData(initialData.contributions)
+      setTotal(initialData.total)
+      setLoading(false)
+      return
+    }
+
     fetch(`/api/github-contributions?username=${username}`)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch')
@@ -51,7 +66,7 @@ export function GitHubHeatmap({ username }: { username: string }) {
       })
       .catch(() => setError(true))
       .finally(() => setLoading(false))
-  }, [username])
+  }, [username, initialData])
 
   // Dismiss tooltip on scroll
   useEffect(() => {

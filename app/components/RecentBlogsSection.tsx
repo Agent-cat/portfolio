@@ -13,11 +13,11 @@ export function RecentBlogsSection() {
       <SectionHeader title="Recent posts" />
 
       {/* 2-col grid */}
-      <div className="relative grid grid-cols-1 gap-px border border-zinc-200 bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-800 sm:grid-cols-2 overflow-hidden">
-        <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 left-0 -translate-x-[34%] -translate-y-[34%] pointer-events-none opacity-70 border-flourish" />
-        <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 right-0 translate-x-[34%] -translate-y-[34%] pointer-events-none opacity-70 border-flourish -scale-x-100" />
-        <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 left-0 -translate-x-[34%] translate-y-[34%] pointer-events-none opacity-70 border-flourish -scale-y-100" />
-        <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 right-0 translate-x-[34%] translate-y-[34%] pointer-events-none opacity-70 border-flourish -scale-x-100 -scale-y-100" />
+      <div className="relative grid grid-cols-1 gap-px border border-zinc-200 bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-800 sm:grid-cols-2">
+        <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 left-0 translate-x-[-34%] translate-y-[-34%] pointer-events-none opacity-30 border-flourish z-10" />
+        <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 right-0 translate-x-[34%] translate-y-[-34%] pointer-events-none opacity-30 border-flourish scale-x-[-1] z-10" />
+        <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 left-0 translate-x-[-34%] translate-y-[34%] pointer-events-none opacity-30 border-flourish scale-y-[-1] z-10" />
+        <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 right-0 translate-x-[34%] translate-y-[34%] pointer-events-none opacity-30 border-flourish scale-[-1] z-10" />
         {posts.map((post) => (
           <Link
             key={post.slug}

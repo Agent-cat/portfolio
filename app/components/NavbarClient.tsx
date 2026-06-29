@@ -13,6 +13,7 @@ import {
   LuSearch,
   LuMenu,
   LuX,
+  LuChevronRight,
 } from 'react-icons/lu'
 import { SiGithub } from 'react-icons/si'
 import navData from '@/data/navbar.json'
@@ -22,6 +23,14 @@ import type { BlogMeta } from '@/lib/blog'
 
 const { nav } = navData
 const githubHref = profileData.socials.find((s) => s.icon === 'SiGithub')?.href ?? 'https://github.com'
+
+const linkDescriptions: Record<string, string> = {
+  '/': 'Homepage & intro',
+  '/work': 'Professional experience',
+  '/projects': 'Creations & open-source',
+  '/blog': 'Articles & writing',
+  '/resume': 'CV & credentials',
+}
 
 export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
   const pathname = usePathname()
@@ -277,19 +286,39 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="fixed inset-0 z-50 bg-white dark:bg-zinc-950 md:hidden"
           >
-            <div className="flex flex-col h-full">
+            {/* Corner border decorations */}
+            <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 left-0 translate-x-[-34%] translate-y-[-34%] pointer-events-none opacity-30 border-flourish z-10" />
+            <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 right-0 translate-x-[34%] translate-y-[-34%] pointer-events-none opacity-30 border-flourish scale-x-[-1] z-10" />
+            <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 left-0 translate-x-[-34%] translate-y-[34%] pointer-events-none opacity-30 border-flourish scale-y-[-1] z-10" />
+            <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 right-0 translate-x-[34%] translate-y-[34%] pointer-events-none opacity-30 border-flourish scale-[-1] z-10" />
+
+            <div className="flex flex-col h-full relative z-10">
               {/* Header */}
               <div className="relative flex items-center h-16 shrink-0 px-5 border-b border-zinc-100 dark:border-zinc-800/80">
+                <Image
+                  src="/floral.png"
+                  alt=""
+                  width={120}
+                  height={120}
+                  className="absolute -left-16 top-1/2 -translate-y-1/2 -rotate-90 opacity-40 dark:opacity-20 pointer-events-none"
+                />
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
+                  className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-100"
                   aria-label="Close menu"
                 >
                   <LuX size={18} />
                 </button>
-                <Link href="/" onClick={() => setMobileOpen(false)} className="absolute left-1/2 -translate-x-1/2 text-xl font-bold text-zinc-900 dark:text-zinc-50" style={{ fontFamily: 'var(--font-courgette)' }}>
+                <Link href="/" onClick={() => setMobileOpen(false)} className="absolute left-1/2 -translate-x-1/2 text-xl font-bold text-zinc-900 dark:text-zinc-50 z-10" style={{ fontFamily: 'var(--font-courgette)' }}>
                   Vishnu Mandala
                 </Link>
+                <Image
+                  src="/floral.png"
+                  alt=""
+                  width={120}
+                  height={120}
+                  className="absolute -right-16 top-1/2 -translate-y-1/2 rotate-90 opacity-40 dark:opacity-20 pointer-events-none"
+                />
               </div>
 
               {/* Navigation links */}
@@ -298,6 +327,7 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
                   {nav.map((item, i) => {
                     const isBlog = item.href === '/blog'
                     const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
+                    const description = linkDescriptions[item.href] || ''
 
                     return (
                       <motion.div
@@ -307,18 +337,25 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
                         transition={{ delay: i * 0.05, duration: 0.25 }}
                       >
                         {isBlog ? (
-                          <div>
+                          <div className="flex flex-col">
                             <button
                               onClick={() => setBlogOpen(o => !o)}
-                              className={`flex w-full h-11 items-center gap-3 rounded-xl px-4 text-[15px] font-medium transition-all ${
+                              className={`group flex w-full items-center gap-3 rounded-xl p-3 transition-all border ${
                                 isActive || blogOpen
-                                  ? 'bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
-                                  : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
+                                  ? 'bg-zinc-150 border-zinc-200/80 text-zinc-900 dark:bg-zinc-900/60 dark:border-zinc-800 dark:text-zinc-100'
+                                  : 'bg-white/40 border-zinc-100/50 text-zinc-650 hover:bg-zinc-100 hover:text-zinc-900 dark:bg-zinc-950/20 dark:border-zinc-900/20 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100'
                               }`}
                             >
-                              {item.label}
-                              <motion.span animate={{ rotate: blogOpen ? 180 : 0 }} transition={{ duration: 0.2 }} className="ml-auto">
-                                <LuChevronDown size={16} />
+                              <div className="flex-1 text-left min-w-0">
+                                <span className="block text-sm font-semibold">{item.label}</span>
+                                <span className="block text-[11px] text-zinc-400 dark:text-zinc-500 mt-0.5">{description}</span>
+                              </div>
+                              <motion.span
+                                animate={{ rotate: blogOpen ? 180 : 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="text-zinc-400 dark:text-zinc-600"
+                              >
+                                <LuChevronDown size={14} />
                               </motion.span>
                             </button>
                             <AnimatePresence>
@@ -330,12 +367,21 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
                                   transition={{ duration: 0.2 }}
                                   className="overflow-hidden"
                                 >
-                                  <div className="pl-4 py-2 flex flex-col gap-0.5">
-                                    <Link href="/blog" onClick={() => setMobileOpen(false)} className="flex h-10 items-center rounded-lg px-3 text-sm text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100 transition-colors">
+                                  <div className="pl-6 pr-4 py-2 flex flex-col gap-1 border-l border-zinc-200 dark:border-zinc-800/80 ml-3.5 mt-1.5">
+                                    <Link
+                                      href="/blog"
+                                      onClick={() => setMobileOpen(false)}
+                                      className="flex h-9 items-center rounded-lg px-3 text-xs font-semibold text-zinc-500 hover:bg-zinc-100/60 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100 transition-colors"
+                                    >
                                       All Blogs
                                     </Link>
                                     {pinnedPosts.slice(0, 3).map((post) => (
-                                      <Link key={post.slug} href={`/blog/${post.slug}/1`} onClick={() => setMobileOpen(false)} className="flex h-10 items-center rounded-lg px-3 text-sm text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100 transition-colors truncate">
+                                      <Link
+                                        key={post.slug}
+                                        href={`/blog/${post.slug}/1`}
+                                        onClick={() => setMobileOpen(false)}
+                                        className="flex h-9 items-center rounded-lg px-3 text-xs font-medium text-zinc-400 hover:bg-zinc-100/60 hover:text-zinc-900 dark:text-zinc-550 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100 transition-colors truncate"
+                                      >
                                         {post.title}
                                       </Link>
                                     ))}
@@ -348,13 +394,20 @@ export function NavbarClient({ pinnedPosts }: { pinnedPosts: BlogMeta[] }) {
                           <Link
                             href={item.href}
                             onClick={() => setMobileOpen(false)}
-                            className={`flex h-11 items-center rounded-xl px-4 text-[15px] font-medium transition-all ${
+                            className={`group flex items-center gap-3 rounded-xl p-3 transition-all border ${
                               isActive
-                                ? 'bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100'
-                                : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
+                                ? 'bg-zinc-150 border-zinc-200/80 text-zinc-900 dark:bg-zinc-900/60 dark:border-zinc-800 dark:text-zinc-100'
+                                : 'bg-white/40 border-zinc-100/50 text-zinc-650 hover:bg-zinc-100 hover:text-zinc-900 dark:bg-zinc-950/20 dark:border-zinc-900/20 dark:text-zinc-400 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-100'
                             }`}
                           >
-                            {item.label}
+                            <div className="flex-1 min-w-0">
+                              <span className="block text-sm font-semibold">{item.label}</span>
+                              <span className="block text-[11px] text-zinc-400 dark:text-zinc-500 mt-0.5">{description}</span>
+                            </div>
+                            <LuChevronRight
+                              size={14}
+                              className="text-zinc-300 group-hover:text-zinc-500 dark:text-zinc-750 dark:group-hover:text-zinc-550 transition-colors"
+                            />
                           </Link>
                         )}
                       </motion.div>

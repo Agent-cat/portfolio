@@ -5,8 +5,8 @@ import workData from '@/data/work.json'
 import { SectionHeader } from '@/app/components/SectionHeader'
 
 export const metadata: Metadata = {
-  title: 'Work — Portfolio',
-  description: 'My work experiences across different companies and roles.',
+  title: 'Experience',
+  description: 'Explore the professional experience and engineering roles of Vishnu Vardhan Mandala in software development.',
 }
 
 export default function WorkPage() {

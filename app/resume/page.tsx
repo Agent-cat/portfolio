@@ -4,8 +4,8 @@ import { LuDownload } from 'react-icons/lu'
 import { SectionHeader } from '@/app/components/SectionHeader'
 
 export const metadata: Metadata = {
-  title: 'Resume — Portfolio',
-  description: 'Download my resume.',
+  title: 'Resume',
+  description: 'View and download the professional resume of Vishnu Vardhan Mandala, Software Developer, detailing credentials, education, and skills.',
 }
 
 export default function ResumePage() {
@@ -15,11 +15,11 @@ export default function ResumePage() {
         <SectionHeader title="Resume" as="h1" />
 
         {/* Resume download */}
-        <div className="relative border border-zinc-200 dark:border-zinc-800 overflow-hidden">
-          <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 left-0 -translate-x-[34%] -translate-y-[34%] pointer-events-none opacity-70 border-flourish" />
-          <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 right-0 translate-x-[34%] -translate-y-[34%] pointer-events-none opacity-70 border-flourish -scale-x-100" />
-          <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 left-0 -translate-x-[34%] translate-y-[34%] pointer-events-none opacity-70 border-flourish -scale-y-100" />
-          <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 right-0 translate-x-[34%] translate-y-[34%] pointer-events-none opacity-70 border-flourish -scale-x-100 -scale-y-100" />
+        <div className="relative border border-zinc-200 dark:border-zinc-800">
+          <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 left-0 translate-x-[-34%] translate-y-[-34%] pointer-events-none opacity-30 border-flourish z-10" />
+          <Image src="/border.png" alt="" width={48} height={48} className="absolute top-0 right-0 translate-x-[34%] translate-y-[-34%] pointer-events-none opacity-30 border-flourish scale-x-[-1] z-10" />
+          <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 left-0 translate-x-[-34%] translate-y-[34%] pointer-events-none opacity-30 border-flourish scale-y-[-1] z-10" />
+          <Image src="/border.png" alt="" width={48} height={48} className="absolute bottom-0 right-0 translate-x-[34%] translate-y-[34%] pointer-events-none opacity-30 border-flourish scale-[-1] z-10" />
 
           <a
             href="/resume/VishnuResume.pdf"

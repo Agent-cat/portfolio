@@ -5,8 +5,8 @@ import { BlogSearch } from '@/app/components/BlogSearch'
 import { SectionHeader } from '@/app/components/SectionHeader'
 
 export const metadata: Metadata = {
-  title: 'Blog — Portfolio',
-  description: 'Writing about code, design, and everything in between.',
+  title: 'Blog',
+  description: 'Read articles and tutorials on software development, web engineering, Next.js, and React written by Vishnu Vardhan Mandala.',
 }
 
 export default function BlogPage() {

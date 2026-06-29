@@ -5,8 +5,8 @@ import projectsData from '@/data/projects.json'
 import { SectionHeader } from '@/app/components/SectionHeader'
 
 export const metadata: Metadata = {
-  title: 'Projects — Portfolio',
-  description: "Things I've built — side projects, experiments, and open source work.",
+  title: 'Projects',
+  description: "Explore the side projects, open-source work, and software creations built by Vishnu Vardhan Mandala, using modern web technologies.",
 }
 
 export default function ProjectsPage() {

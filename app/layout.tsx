@@ -22,8 +22,32 @@ const baseUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: 'Portfolio',
-  description: 'Personal portfolio',
+  title: {
+    default: 'Vishnu Vardhan Mandala | Software Developer Portfolio',
+    template: '%s | Vishnu Vardhan Mandala',
+  },
+  description: 'Personal portfolio of Vishnu Vardhan Mandala, a student and software developer building high-quality web applications. Explore my projects, work experience, education, and technical skills.',
+  keywords: ['Vishnu Vardhan Mandala', 'Software Developer', 'Next.js Portfolio', 'React Developer', 'TypeScript Engineer', 'Full Stack Developer', 'Web Developer portfolio'],
+  authors: [{ name: 'Vishnu Vardhan Mandala' }],
+  creator: 'Vishnu Vardhan Mandala',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: baseUrl,
+    title: 'Vishnu Vardhan Mandala | Software Developer Portfolio',
+    description: 'Personal portfolio of Vishnu Vardhan Mandala, a student and software developer building high-quality web applications.',
+    siteName: 'Vishnu Vardhan Mandala Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Vishnu Vardhan Mandala | Software Developer Portfolio',
+    description: 'Personal portfolio of Vishnu Vardhan Mandala, a student and software developer building high-quality web applications.',
+    creator: '@_.vishnu_.17',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({

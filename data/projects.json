@@ -3,93 +3,109 @@
   "subheading": "Things I've built — side projects, experiments, and open source work.",
   "projects": [
     {
-      "name": "Algofox-Competitive coding platform",
-      "description": "A competit",
-      "image": "/projects/portfolio.png",
-      "status": "Live",
+      "name": "Cloud-Native Competitive Programming Platform",
+      "description": "Designed and developed a scalable web platform using Next.js and PostgreSQL, supporting secure multi-user workflows with RBAC.",
+      "image": null,
+      "status": "Under Development",
       "year": "2026",
-      "githubUrl": "https://github.com/ramxin/portfolio",
-      "liveUrl": "https://ramx.in",
+      "githubUrl": null,
+      "liveUrl": null,
       "technologies": [
         {
           "name": "Next.js",
           "icon": "SiNextdotjs"
         },
         {
-          "name": "Tailwind",
-          "icon": "SiTailwindcss"
+          "name": "PostgreSQL",
+          "icon": "SiPostgresql"
         },
         {
-          "name": "TypeScript",
-          "icon": "SiTypescript"
+          "name": "Redis",
+          "icon": "SiRedis"
         },
         {
-          "name": "Vercel",
-          "icon": "SiVercel"
+          "name": "Docker",
+          "icon": "SiDocker"
+        },
+        {
+          "name": "Prisma",
+          "icon": "SiPrisma"
+        },
+        {
+          "name": "Kubernetes",
+          "icon": "SiKubernetes"
+        },
+        {
+          "name": "RabbitMQ",
+          "icon": "SiRabbitmq"
         }
       ]
     },
     {
-      "name": "Promote",
-      "description": "A platform for creating and managing promotional campaigns. Built the complete frontend infrastructure from scratch including design system and API integration.",
-      "image": "/projects/promote.png",
+      "name": "Maguva Handlooms- E Commerce Platform",
+      "description": "Built a scalable full-stack e-commerce platform using Next.js, Prisma ORM, and Redis, leveraging SSR and API routes.",
+      "image": null,
       "status": "Live",
       "year": "2025",
       "githubUrl": null,
-      "liveUrl": "https://promote.so",
+      "liveUrl": "https://maguvahandlooms.in",
       "technologies": [
         {
           "name": "Next.js",
           "icon": "SiNextdotjs"
         },
         {
-          "name": "TypeScript",
-          "icon": "SiTypescript"
+          "name": "Prisma",
+          "icon": "SiPrisma"
         },
         {
-          "name": "Tailwind",
-          "icon": "SiTailwindcss"
+          "name": "Redis",
+          "icon": "SiRedis"
         },
         {
-          "name": "Figma",
-          "icon": "SiFigma"
-        },
-        {
-          "name": "Turborepo",
-          "icon": "SiTurborepo"
+          "name": "PostgreSQL",
+          "icon": "SiPostgresql"
         }
       ]
     },
     {
-      "name": "Dev Tools CLI",
-      "description": "A command-line toolkit for automating repetitive dev workflows — scaffolding, code generation, and deployment helpers.",
+      "name": "Midland — Real Estate Rental & Selling Platform",
+      "description": "A real estate construction and rental platform built using React, Node.js, Mongoose, MongoDB, and Twilio.",
       "image": null,
-      "status": "WIP",
+      "status": "Archived",
       "year": "2025",
-      "githubUrl": "https://github.com/ramxin/dev-tools-cli",
-      "liveUrl": null,
+      "githubUrl": "https://github.com/Agent-cat/Midland-.git",
+      "liveUrl": "https://midlandrealestateservices.com",
       "technologies": [
+        {
+          "name": "React",
+          "icon": "SiReact"
+        },
         {
           "name": "Node.js",
           "icon": "SiNodedotjs"
         },
         {
-          "name": "TypeScript",
-          "icon": "SiTypescript"
+          "name": "Mongoose",
+          "icon": "SiMongoose"
         },
         {
-          "name": "Bun",
-          "icon": "SiBun"
+          "name": "MongoDB",
+          "icon": "SiMongodb"
+        },
+        {
+          "name": "Twilio",
+          "icon": "SiTwilio"
         }
       ]
     },
     {
-      "name": "Taskr",
-      "description": "Minimal task management app with real-time sync, drag-and-drop boards, and team collaboration features.",
-      "image": "/projects/taskr.png",
+      "name": "Samyak 2025 — Event & Fest Management Platform",
+      "description": "Built a full-stack event management system using React.js, Node.js, Redis, and Multer, enabling streamlined participant workflows.",
+      "image": null,
       "status": "Archived",
-      "year": "2024",
-      "githubUrl": "https://github.com/ramxin/taskr",
+      "year": "2025",
+      "githubUrl": null,
       "liveUrl": null,
       "technologies": [
         {
@@ -97,16 +113,20 @@
           "icon": "SiReact"
         },
         {
-          "name": "Supabase",
-          "icon": "SiSupabase"
+          "name": "Node.js",
+          "icon": "SiNodedotjs"
         },
         {
-          "name": "Tailwind",
-          "icon": "SiTailwindcss"
+          "name": "Redis",
+          "icon": "SiRedis"
         },
         {
-          "name": "TypeScript",
-          "icon": "SiTypescript"
+          "name": "Mongoose",
+          "icon": "SiMongoose"
+        },
+        {
+          "name": "MongoDB",
+          "icon": "SiMongodb"
         }
       ]
     }

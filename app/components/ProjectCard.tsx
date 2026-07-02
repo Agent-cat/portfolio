@@ -24,6 +24,10 @@ import {
   SiPython,
   SiGit,
   SiGithub,
+  SiKubernetes,
+  SiRabbitmq,
+  SiMongoose,
+  SiTwilio,
 } from 'react-icons/si'
 import { LuGithub, LuExternalLink, LuImage } from 'react-icons/lu'
 import type { IconType } from 'react-icons'
@@ -51,6 +55,10 @@ const iconMap: Record<string, { Icon: IconType; color: string; darkColor: string
   SiPython:      { Icon: SiPython,       color: '#3776AB', darkColor: '#60A5FA' },
   SiGit:         { Icon: SiGit,          color: '#F05032', darkColor: '#F87171' },
   SiGithub:      { Icon: SiGithub,       color: '#181717', darkColor: '#FAFAFA' },
+  SiKubernetes:  { Icon: SiKubernetes,   color: '#326CE5', darkColor: '#326CE5' },
+  SiRabbitmq:    { Icon: SiRabbitmq,     color: '#FF6600', darkColor: '#FF6600' },
+  SiMongoose:    { Icon: SiMongoose,     color: '#880000', darkColor: '#F05032' },
+  SiTwilio:      { Icon: SiTwilio,       color: '#F22F46', darkColor: '#F22F46' },
 }
 
 // ── Status badge style map ───────────────────────────────────────────────────
